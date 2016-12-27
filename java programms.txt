@@ -1,0 +1,112 @@
+/*prime numbers*/
+import java.util.Scanner;
+class Prime
+{
+public static void main(String args[])
+{
+Scanner s=new Scanner(System.in);
+System.out.println("enter a value");
+int a=s.nextInt();
+int count=0;
+for(int i=1;i<=a;i++)
+{
+if(a%i==0)
+{
+count++;
+}
+}
+if(count==2)
+{
+System.out.println("the number is prime");
+}
+else
+{
+System.out.println("the number is not a prime number");
+}
+}
+}
+output:
+17
+the number is prime number.
+
+
+
+/*studentmarks*/
+import java.util.Scanner;
+class Student
+{
+public static void main(String args[])
+{
+Scanner s=new Scanner(System.in);
+System.out.println("enter the name");
+String name=s.next();
+System.out.println("enter the marks");
+int s1=s.nextInt();
+int s2=s.nextInt();
+int s3=s.nextInt();
+double avg=(s1+s2+s3)/3;
+if(avg<35)
+{
+System.out.println("student is fail:"+name);
+}
+else if(avg>35&&avg<60)
+{
+System.out.println("student secured A grade:"+name);
+}
+else if(avg>60&&avg<=100)
+{
+System.out.println("student secured A+ grade:"+name);
+}
+}
+}
+
+output:
+enter the name:mounika
+enter s1marks:50
+enter s2marks:50
+enter s3marks:50
+student secured A grade:mounika
+
+
+/*Days*/
+import java.util.Scanner;
+class Days
+{
+public static void main(String args[])
+{
+Scanner s=new Scanner(System.in);
+int choice=s.nextInt();
+switch(choice)
+{
+case 1:if(choice==1)
+{
+System.out.println("the day is sunday");
+break;
+}
+case 2:if(choice==2)
+{
+System.out.println("the day is monday");
+break;
+}
+case 3:if(choice==3)
+{
+System.out.println("the day is tuesday");
+break;
+}
+default:
+{
+System.out.println("invalid entry");
+break;
+}
+}
+}
+}
+
+output:
+2
+the day is monday
+
+
+
+ 
+
