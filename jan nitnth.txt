@@ -1,0 +1,100 @@
+query 1:
+      java program to print numbers in pattern format
+
+package javaPracties;
+import java.util.Scanner;
+public class pattern {
+public static void main(String args[])
+{
+	Scanner s=new Scanner(System.in);
+	int j=1,ci=1;
+	System.out.println("enter the value");
+	int n=s.nextInt();
+	for( int i=1;i<=n;i++)
+	{
+		//System.out.println(" ")
+	for( j=0;j<i;j++)
+	{
+	System.out.print(ci+" ");
+	ci++;
+	}
+	System.out.println();
+	}
+	
+}
+
+}
+
+output:
+enter the value
+3
+1 
+2 3 
+4 5 6 
+
+
+
+
+
+query 2:
+       program to print personal details
+package javaPracties;
+import java.util.Scanner;
+public class personal {
+	public static void main(String args[])
+	{
+	Scanner s=new Scanner(System.in);
+	   System.out.println("name");
+	   String name=s.next();
+	   System.out.println("age");
+	   int age=s.nextInt();
+	   System.out.println("dob");
+	   int dob=s.nextInt();
+	   System.out.println(name+" "+age+" "+dob );
+	   }
+           }
+
+output:
+name
+mounika
+age
+22
+dob
+13071994
+mounika 22 13071994
+
+
+
+query 3:
+       proram to print the number is even r odd
+
+package javaPracties;
+import java.util.Scanner;
+public class odd {
+	public static void main(String args[])
+	{
+		Scanner s=new Scanner(System.in);
+		System.out.println("enter the number");
+		int num=s.nextInt();
+		if(num%2==0)
+		{
+			System.out.println("the number is even");
+		}
+		else
+		{
+			System.out.println("the number is odd");
+		}
+		
+	}
+
+}
+
+output:
+enter the number
+12
+the number is even
+enter the number
+13
+the number is odd
+
+
