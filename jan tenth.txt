@@ -1,0 +1,38 @@
+query:
+     java program to print maximum age
+
+package javaPracties;
+ import java.util.Scanner;
+class age
+{
+public static void main(String []aa)
+{
+Scanner s = new Scanner(System.in);
+int size = s.nextInt();
+int age[] = new int[size];
+//String name[] = new String[size];
+for(int j=0;j<size;j++)
+{
+age[j] = s.nextInt();
+//name[j] = s.nextLine();
+}
+int maxage = age[0];
+//String names= name[0];
+for(int i=1;i<size;i++)
+{
+if(age[i]>maxage)
+{
+maxage = age[i];
+//snames = name[i];
+}
+}
+System.out.println(maxage);
+}
+}
+
+output:
+3
+12
+16
+14
+16
