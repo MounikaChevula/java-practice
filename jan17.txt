@@ -1,0 +1,140 @@
+Query 1:
+      java program for fibonacci series without using recursive function concept
+
+program:
+package test;
+import java.util.Scanner;
+public class fib {
+	public static void main(String[] args)
+	{
+	Scanner s=new Scanner(System.in);
+		int n1=0,n2=1,n3,size;
+		System.out.println("enter the number");
+		int num=s.nextInt();
+System.out.println(n1+" "+n2);
+for(int i=2;i<=num;i++)
+{
+	n3=n1+n2;
+	System.out.println(n3);
+	n1=n2;
+	n2=n3;
+}
+
+	}
+
+}
+
+output:
+enter the number
+5
+0
+1
+1
+2
+3
+5
+
+
+Query 2:
+     java program to reverse a number
+program:
+
+package test;
+import java.util.Scanner;
+public class rev {
+	public static void main(String args[])
+	{
+		Scanner s =new Scanner(System.in);
+		System.out.println("enter a number");
+		int num=s.nextInt();
+		int revnum=0;
+		while(num>0)
+		{
+			 revnum=revnum*10;
+			revnum=revnum+(num%10);
+		    num=(num/10);
+		}
+		System.out.println(revnum);
+	
+	}
+}
+
+output:
+123
+321
+
+
+Query 3:
+     program to print a pattern for the following
+        *
+        ***
+        *****
+        *******
+        *********
+
+program:
+
+package test;
+import java.util.Scanner;
+public class pattern {
+public static void main(String args[])
+{
+	Scanner s=new Scanner(System.in);
+	int j=0;
+	System.out.println("enter the length");
+	int len=s.nextInt();
+	for(int i=1;i<=len;i++)
+	{
+		for( j=1;j<2*i-1;j++)
+		{
+			System.out.print("*");
+	}
+		System.out.println("*");
+}
+}
+}
+
+output:
+enter the length
+3
+*
+***
+*****
+
+
+
+Query 4:
+       program to find the sum of digits for the given number
+
+program:
+
+package test;
+import java.util.Scanner;
+public class sod {
+
+		static int sum=0;
+		public int sum(int num)
+		{
+				while(num>0)
+				{
+				sum =sum+num%10;
+				num=num/10;
+				}
+				return (sum);
+		}
+			public static void main(String args[])
+			{
+			Scanner obj=new Scanner(System.in);
+			System.out.println("enter the number");
+                        int num=obj.nextInt();
+			sod s=new sod();
+			s.sum(num);
+                        System.out.println(sum);
+			}
+		}
+
+
+output:
+123
+6
+
