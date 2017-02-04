@@ -1,0 +1,289 @@
+Show details
+// Movie Database Queries
+
+Schema of MOvie dB:
+1.Movie Name
+2.Movie Release Date
+3.Movie Director
+4.Movie Actor
+5.Movie Rating
+6.Movie Type
+
+
+
+===========================================
+Queries:
+1.Display the list of all the movies released in between jan 1 to jan 31?
+2.Dislpay the list of allmovies belongs to category  "U"?
+3.Display the list of all movies directed by XYZ director?
+
+
+
+
+======================================================
+
+
+
+import java.sql.DriverManager;
+import javax.servlet.*;
+import javax.servlet.http.*;
+import java.sql.*;
+import java.io.*;
+ import java.util.*;
+public class MovieDb extends HttpServlet
+{
+    public void doPost(HttpServletRequest req,HttpServletResponse res) throws IOException,ServletException
+    {
+        try{
+         Class.forName("com.mysql.jdbc.Driver");
+         Connection con = DriverManager.getConnection("jdbc:mysql:localhost/harsha","root","root");
+         Statement st = con.createStatement();
+         ResultSet rs = st.executeQuery("select * from MovieDb where date in between 1jan and 31 jan");
+         ArrayList al = new ArrayList();
+         while(rs.next())
+         {
+             //name of movies
+             al.add(rs.getString("1"));
+         }
+         ResultSet rs2 = st.executeQuery("select * from MOvie where category='u'");
+         ArrayList al2 = new ArrayList();
+         while(rs2.next())
+         {
+             //  list fo files whose category is U
+             al2.add(rs2.getString(1));
+         }
+         ResultSet rs3 = st.executeQuery("select * from MOvie Where director ='harsha'");
+         ArrayList al3 = new ArrayList();
+         while(rs3.next())
+         {
+             //  list fo files which is directed by xyz DIRECTOR
+             al2.add(rs2.getString(1));
+         }
+         
+         
+         PrintWriter pw = res.getWriter();
+         pw.println("list of movies whose date is jan 1 to jan 31 "+al);
+         pw.println("list of movies whose category is U "+al2);
+         pw.println("list of movies which are directed by XYZ director "+al3);
+         
+        } catch(Exception e)
+         {
+             System.out.println(e);
+         }
+    }
+}
+
+
+
+
+
+
+Show details
+
+
+// Product Details and Customer Details
+
+schema in DB
+1.customer ID
+2.ProductID
+3.ProductPrice
+4.Quantity
+5.TotalPrice
+6.DateOfPurchase
+7.ProductType
+8.DiscountPercentage
+
+
+
+
+Queries:
+1.Total purchase made by single customer (Static way)
+2.purchase made by all the customers between 1-jan tio 31-jan?
+3.Display the list of all products where discount is >25%?
+4.Proiduct Category wise total sales?
+
+
+
+=======================================================
+
+
+
+
+
+import java.io.*;
+import java.sql.*;
+import java.util.ArrayList;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+public class product extends HttpServlet {
+    public void doPost(HttpServletRequest req,HttpServletResponse res)throws IOException,ServletException
+    {
+        try{
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection con=DriverManager.getConnection("jdbc:mysql://localhost/customer","root","root");
+            Statement st=con.createStatement();
+            ResultSet rs=st.executeQuery("select * from product");
+            ArrayList al=new ArrayList();
+            int count=0;
+            while(rs.next())
+            {
+               String customerid=rs.getString("id");
+               String productid=rs.getString("pid");
+               String productprice=rs.getString("pp");
+               String quantity=rs.getString("quant");
+               String totalprice=rs.getString("tp");
+               String dop=rs.getString("dop");
+               String producttype=rs.getString("ptype");
+               int dispercent=rs.getInt("dp");
+              if(dispercent>25)
+               {
+                   count++;
+               }
+            }
+               ResultSet rs2=st.executeQuery("selct * from product where date between 1stjan to 31stjan");
+               float purchase=0.0f;
+               
+               while(rs2.next())
+               {
+                   purchase=purchase+rs2.getFloat("productprice");
+               }
+               
+               ResultSet rs4=st.executeQuery("select * from customer where custid = 'id'");
+              float price = 0.0f;
+               while(rs4.next())
+               {
+                   // total price of individual customer id
+                  price = price+rs4.getFloat(3);
+               }
+               PrintWriter pw = res.getWriter();
+               pw.println("list of products whose discount is greater than 25percent:"+count);
+               pw.println("total product between 1stjan to 31stjan is"+ purchase);
+               pw.println("total price of individual customer id 1001 "+ price);
+               pw.println("total purchase made by single "+ price);
+      }
+        catch(Exception e)
+        {
+            
+        }
+
+    
+    }
+}
+
+
+Show details
+
+
+// employee details in database
+
+Query:
+1.count total no fo employees
+2. count total employees of department wise
+3.total employee city wise
+4.Average salary of total employees
+5.average salary of department wise
+6.list of files whose status is single?
+7.List of files who will retire after 2 years (60 yrs retirement date)
+
+
+
+
+
+import java.io.*;
+import java.sql.*;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+public class myclass extends HttpServlet {
+    public void doPost(HttpServletRequest req,HttpServletResponse res)throws IOException,ServletException
+    {
+        try{
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection con=DriverManager.getConnection("jdbc:mysql://localhost/emp","root","root");
+            Statement st=con.createStatement();
+            ResultSet rs=st.executeQuery("select * from employ");
+            int count=0;
+            int dep1=0;
+            int dep2=0;
+            int city1=0;
+            int city2=0;
+            double sal=0;
+            double saldep1=0;
+            double saldep2=0;
+            int single=0;
+            int retire=0;
+            while(rs.next())
+            {
+                         String employeeid=rs.getString("id");
+                         String employeename=rs.getString("name");
+                         int age=rs.getInt("age");
+                         String city=rs.getString("city");
+                         double salry=rs.getDouble("salary");
+                        // double saldep1=rs.getDouble("salary");
+                         //double saldep2=rs.getDouble("salary");
+                         String dep=rs.getString("department");
+                         int dob=rs.getInt("dob");
+                         String date=rs.getString("date");
+                         String status=rs.getString("status");
+                         PrintWriter out=res.getWriter();
+                        count++;
+                        out.println("the count of employeeid:");
+                        if(dep.equals("cse"))
+                        {
+                            dep1++;
+                        }
+                        else if(dep.equals("eee"))
+                        {
+                            dep2++;
+                        }    
+                        else
+                        {
+                           System.out.println("invaid entry");
+                        }
+                        out.println("the count of department1 is:"+ dep1);
+                        out.println("the count of department2:"+ dep2);
+                         if(city.equals("hyd"))
+                        {
+                            city1++;
+                        }
+                        else if(city.equals("bang"))
+                        {
+                            city2++;
+                        }
+                         else
+                        {
+                        }
+                         out.println("the count of hyd:"+ city1);
+                          out.println("the count of bang:"+ city2);                        
+            
+                          double avgsal=(sal/count);
+                          double avgsaldep1=(saldep1/dep1);
+                          double avgsaldep2=(saldep2/dep2);
+                          sal++;
+                          out.println("the count of averagesalary:"+avgsal);
+                          out.println("the count of averagesalarydepartment1:"+avgsaldep1);
+                          out.println("the count of averagesalarydepartment2:"+avgsaldep2);
+                          if(age>=58&&age<60)
+                          {
+                           retire++;   
+                            }
+                          out.println("the count of retirement:"+retire);
+                          if(status.equals("single"))
+                          {
+                              single++;
+                          }
+               
+                out.println("the count of status:"+ single);
+                
+            }
+            
+        }catch(Exception e)
+        {
+            
+        }
+    }
+    
+}
